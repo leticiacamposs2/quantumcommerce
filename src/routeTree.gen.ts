@@ -9,38 +9,254 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppTrackingRouteImport } from './routes/app.tracking'
+import { Route as AppSupportRouteImport } from './routes/app.support'
+import { Route as AppStockRouteImport } from './routes/app.stock'
+import { Route as AppShopRouteImport } from './routes/app.shop'
+import { Route as AppSellerRouteImport } from './routes/app.seller'
+import { Route as AppRecommendationsRouteImport } from './routes/app.recommendations'
+import { Route as AppProductRouteImport } from './routes/app.product'
+import { Route as AppPaymentRouteImport } from './routes/app.payment'
+import { Route as AppLogisticsRouteImport } from './routes/app.logistics'
+import { Route as AppHubRouteImport } from './routes/app.hub'
+import { Route as AppGovernanceRouteImport } from './routes/app.governance'
+import { Route as AppExecutiveRouteImport } from './routes/app.executive'
+import { Route as AppConfirmationRouteImport } from './routes/app.confirmation'
+import { Route as AppCheckoutRouteImport } from './routes/app.checkout'
+import { Route as AppCartRouteImport } from './routes/app.cart'
+import { Route as AppAnalyticsRouteImport } from './routes/app.analytics'
 
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppTrackingRoute = AppTrackingRouteImport.update({
+  id: '/tracking',
+  path: '/tracking',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSupportRoute = AppSupportRouteImport.update({
+  id: '/support',
+  path: '/support',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppStockRoute = AppStockRouteImport.update({
+  id: '/stock',
+  path: '/stock',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppShopRoute = AppShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSellerRoute = AppSellerRouteImport.update({
+  id: '/seller',
+  path: '/seller',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppRecommendationsRoute = AppRecommendationsRouteImport.update({
+  id: '/recommendations',
+  path: '/recommendations',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProductRoute = AppProductRouteImport.update({
+  id: '/product',
+  path: '/product',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPaymentRoute = AppPaymentRouteImport.update({
+  id: '/payment',
+  path: '/payment',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppLogisticsRoute = AppLogisticsRouteImport.update({
+  id: '/logistics',
+  path: '/logistics',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHubRoute = AppHubRouteImport.update({
+  id: '/hub',
+  path: '/hub',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppGovernanceRoute = AppGovernanceRouteImport.update({
+  id: '/governance',
+  path: '/governance',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppExecutiveRoute = AppExecutiveRouteImport.update({
+  id: '/executive',
+  path: '/executive',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppConfirmationRoute = AppConfirmationRouteImport.update({
+  id: '/confirmation',
+  path: '/confirmation',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCheckoutRoute = AppCheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCartRoute = AppCartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAnalyticsRoute = AppAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/app/analytics': typeof AppAnalyticsRoute
+  '/app/cart': typeof AppCartRoute
+  '/app/checkout': typeof AppCheckoutRoute
+  '/app/confirmation': typeof AppConfirmationRoute
+  '/app/executive': typeof AppExecutiveRoute
+  '/app/governance': typeof AppGovernanceRoute
+  '/app/hub': typeof AppHubRoute
+  '/app/logistics': typeof AppLogisticsRoute
+  '/app/payment': typeof AppPaymentRoute
+  '/app/product': typeof AppProductRoute
+  '/app/recommendations': typeof AppRecommendationsRoute
+  '/app/seller': typeof AppSellerRoute
+  '/app/shop': typeof AppShopRoute
+  '/app/stock': typeof AppStockRoute
+  '/app/support': typeof AppSupportRoute
+  '/app/tracking': typeof AppTrackingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/app/analytics': typeof AppAnalyticsRoute
+  '/app/cart': typeof AppCartRoute
+  '/app/checkout': typeof AppCheckoutRoute
+  '/app/confirmation': typeof AppConfirmationRoute
+  '/app/executive': typeof AppExecutiveRoute
+  '/app/governance': typeof AppGovernanceRoute
+  '/app/hub': typeof AppHubRoute
+  '/app/logistics': typeof AppLogisticsRoute
+  '/app/payment': typeof AppPaymentRoute
+  '/app/product': typeof AppProductRoute
+  '/app/recommendations': typeof AppRecommendationsRoute
+  '/app/seller': typeof AppSellerRoute
+  '/app/shop': typeof AppShopRoute
+  '/app/stock': typeof AppStockRoute
+  '/app/support': typeof AppSupportRoute
+  '/app/tracking': typeof AppTrackingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/app/analytics': typeof AppAnalyticsRoute
+  '/app/cart': typeof AppCartRoute
+  '/app/checkout': typeof AppCheckoutRoute
+  '/app/confirmation': typeof AppConfirmationRoute
+  '/app/executive': typeof AppExecutiveRoute
+  '/app/governance': typeof AppGovernanceRoute
+  '/app/hub': typeof AppHubRoute
+  '/app/logistics': typeof AppLogisticsRoute
+  '/app/payment': typeof AppPaymentRoute
+  '/app/product': typeof AppProductRoute
+  '/app/recommendations': typeof AppRecommendationsRoute
+  '/app/seller': typeof AppSellerRoute
+  '/app/shop': typeof AppShopRoute
+  '/app/stock': typeof AppStockRoute
+  '/app/support': typeof AppSupportRoute
+  '/app/tracking': typeof AppTrackingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/app/analytics'
+    | '/app/cart'
+    | '/app/checkout'
+    | '/app/confirmation'
+    | '/app/executive'
+    | '/app/governance'
+    | '/app/hub'
+    | '/app/logistics'
+    | '/app/payment'
+    | '/app/product'
+    | '/app/recommendations'
+    | '/app/seller'
+    | '/app/shop'
+    | '/app/stock'
+    | '/app/support'
+    | '/app/tracking'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/app'
+    | '/app/analytics'
+    | '/app/cart'
+    | '/app/checkout'
+    | '/app/confirmation'
+    | '/app/executive'
+    | '/app/governance'
+    | '/app/hub'
+    | '/app/logistics'
+    | '/app/payment'
+    | '/app/product'
+    | '/app/recommendations'
+    | '/app/seller'
+    | '/app/shop'
+    | '/app/stock'
+    | '/app/support'
+    | '/app/tracking'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/app/analytics'
+    | '/app/cart'
+    | '/app/checkout'
+    | '/app/confirmation'
+    | '/app/executive'
+    | '/app/governance'
+    | '/app/hub'
+    | '/app/logistics'
+    | '/app/payment'
+    | '/app/product'
+    | '/app/recommendations'
+    | '/app/seller'
+    | '/app/shop'
+    | '/app/stock'
+    | '/app/support'
+    | '/app/tracking'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +264,165 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/tracking': {
+      id: '/app/tracking'
+      path: '/tracking'
+      fullPath: '/app/tracking'
+      preLoaderRoute: typeof AppTrackingRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/support': {
+      id: '/app/support'
+      path: '/support'
+      fullPath: '/app/support'
+      preLoaderRoute: typeof AppSupportRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/stock': {
+      id: '/app/stock'
+      path: '/stock'
+      fullPath: '/app/stock'
+      preLoaderRoute: typeof AppStockRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/shop': {
+      id: '/app/shop'
+      path: '/shop'
+      fullPath: '/app/shop'
+      preLoaderRoute: typeof AppShopRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/seller': {
+      id: '/app/seller'
+      path: '/seller'
+      fullPath: '/app/seller'
+      preLoaderRoute: typeof AppSellerRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/recommendations': {
+      id: '/app/recommendations'
+      path: '/recommendations'
+      fullPath: '/app/recommendations'
+      preLoaderRoute: typeof AppRecommendationsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/product': {
+      id: '/app/product'
+      path: '/product'
+      fullPath: '/app/product'
+      preLoaderRoute: typeof AppProductRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/payment': {
+      id: '/app/payment'
+      path: '/payment'
+      fullPath: '/app/payment'
+      preLoaderRoute: typeof AppPaymentRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/logistics': {
+      id: '/app/logistics'
+      path: '/logistics'
+      fullPath: '/app/logistics'
+      preLoaderRoute: typeof AppLogisticsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/hub': {
+      id: '/app/hub'
+      path: '/hub'
+      fullPath: '/app/hub'
+      preLoaderRoute: typeof AppHubRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/governance': {
+      id: '/app/governance'
+      path: '/governance'
+      fullPath: '/app/governance'
+      preLoaderRoute: typeof AppGovernanceRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/executive': {
+      id: '/app/executive'
+      path: '/executive'
+      fullPath: '/app/executive'
+      preLoaderRoute: typeof AppExecutiveRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/confirmation': {
+      id: '/app/confirmation'
+      path: '/confirmation'
+      fullPath: '/app/confirmation'
+      preLoaderRoute: typeof AppConfirmationRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/checkout': {
+      id: '/app/checkout'
+      path: '/checkout'
+      fullPath: '/app/checkout'
+      preLoaderRoute: typeof AppCheckoutRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/cart': {
+      id: '/app/cart'
+      path: '/cart'
+      fullPath: '/app/cart'
+      preLoaderRoute: typeof AppCartRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/analytics': {
+      id: '/app/analytics'
+      path: '/analytics'
+      fullPath: '/app/analytics'
+      preLoaderRoute: typeof AppAnalyticsRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
+interface AppRouteChildren {
+  AppAnalyticsRoute: typeof AppAnalyticsRoute
+  AppCartRoute: typeof AppCartRoute
+  AppCheckoutRoute: typeof AppCheckoutRoute
+  AppConfirmationRoute: typeof AppConfirmationRoute
+  AppExecutiveRoute: typeof AppExecutiveRoute
+  AppGovernanceRoute: typeof AppGovernanceRoute
+  AppHubRoute: typeof AppHubRoute
+  AppLogisticsRoute: typeof AppLogisticsRoute
+  AppPaymentRoute: typeof AppPaymentRoute
+  AppProductRoute: typeof AppProductRoute
+  AppRecommendationsRoute: typeof AppRecommendationsRoute
+  AppSellerRoute: typeof AppSellerRoute
+  AppShopRoute: typeof AppShopRoute
+  AppStockRoute: typeof AppStockRoute
+  AppSupportRoute: typeof AppSupportRoute
+  AppTrackingRoute: typeof AppTrackingRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppAnalyticsRoute: AppAnalyticsRoute,
+  AppCartRoute: AppCartRoute,
+  AppCheckoutRoute: AppCheckoutRoute,
+  AppConfirmationRoute: AppConfirmationRoute,
+  AppExecutiveRoute: AppExecutiveRoute,
+  AppGovernanceRoute: AppGovernanceRoute,
+  AppHubRoute: AppHubRoute,
+  AppLogisticsRoute: AppLogisticsRoute,
+  AppPaymentRoute: AppPaymentRoute,
+  AppProductRoute: AppProductRoute,
+  AppRecommendationsRoute: AppRecommendationsRoute,
+  AppSellerRoute: AppSellerRoute,
+  AppShopRoute: AppShopRoute,
+  AppStockRoute: AppStockRoute,
+  AppSupportRoute: AppSupportRoute,
+  AppTrackingRoute: AppTrackingRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
