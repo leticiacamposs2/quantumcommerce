@@ -18,6 +18,7 @@ import { Route as AppSellerRouteImport } from './routes/app.seller'
 import { Route as AppRecommendationsRouteImport } from './routes/app.recommendations'
 import { Route as AppProductRouteImport } from './routes/app.product'
 import { Route as AppPaymentRouteImport } from './routes/app.payment'
+import { Route as AppLogisticsRouteImport } from './routes/app.logistics'
 import { Route as AppConfirmationRouteImport } from './routes/app.confirmation'
 import { Route as AppCheckoutRouteImport } from './routes/app.checkout'
 import { Route as AppCartRouteImport } from './routes/app.cart'
@@ -67,6 +68,11 @@ const AppPaymentRoute = AppPaymentRouteImport.update({
   path: '/payment',
   getParentRoute: () => AppRoute,
 } as any)
+const AppLogisticsRoute = AppLogisticsRouteImport.update({
+  id: '/logistics',
+  path: '/logistics',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppConfirmationRoute = AppConfirmationRouteImport.update({
   id: '/confirmation',
   path: '/confirmation',
@@ -89,6 +95,7 @@ export interface FileRoutesByFullPath {
   '/app/cart': typeof AppCartRoute
   '/app/checkout': typeof AppCheckoutRoute
   '/app/confirmation': typeof AppConfirmationRoute
+  '/app/logistics': typeof AppLogisticsRoute
   '/app/payment': typeof AppPaymentRoute
   '/app/product': typeof AppProductRoute
   '/app/recommendations': typeof AppRecommendationsRoute
@@ -103,6 +110,7 @@ export interface FileRoutesByTo {
   '/app/cart': typeof AppCartRoute
   '/app/checkout': typeof AppCheckoutRoute
   '/app/confirmation': typeof AppConfirmationRoute
+  '/app/logistics': typeof AppLogisticsRoute
   '/app/payment': typeof AppPaymentRoute
   '/app/product': typeof AppProductRoute
   '/app/recommendations': typeof AppRecommendationsRoute
@@ -118,6 +126,7 @@ export interface FileRoutesById {
   '/app/cart': typeof AppCartRoute
   '/app/checkout': typeof AppCheckoutRoute
   '/app/confirmation': typeof AppConfirmationRoute
+  '/app/logistics': typeof AppLogisticsRoute
   '/app/payment': typeof AppPaymentRoute
   '/app/product': typeof AppProductRoute
   '/app/recommendations': typeof AppRecommendationsRoute
@@ -134,6 +143,7 @@ export interface FileRouteTypes {
     | '/app/cart'
     | '/app/checkout'
     | '/app/confirmation'
+    | '/app/logistics'
     | '/app/payment'
     | '/app/product'
     | '/app/recommendations'
@@ -148,6 +158,7 @@ export interface FileRouteTypes {
     | '/app/cart'
     | '/app/checkout'
     | '/app/confirmation'
+    | '/app/logistics'
     | '/app/payment'
     | '/app/product'
     | '/app/recommendations'
@@ -162,6 +173,7 @@ export interface FileRouteTypes {
     | '/app/cart'
     | '/app/checkout'
     | '/app/confirmation'
+    | '/app/logistics'
     | '/app/payment'
     | '/app/product'
     | '/app/recommendations'
@@ -241,6 +253,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppPaymentRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/logistics': {
+      id: '/app/logistics'
+      path: '/logistics'
+      fullPath: '/app/logistics'
+      preLoaderRoute: typeof AppLogisticsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/confirmation': {
       id: '/app/confirmation'
       path: '/confirmation'
@@ -269,6 +288,7 @@ interface AppRouteChildren {
   AppCartRoute: typeof AppCartRoute
   AppCheckoutRoute: typeof AppCheckoutRoute
   AppConfirmationRoute: typeof AppConfirmationRoute
+  AppLogisticsRoute: typeof AppLogisticsRoute
   AppPaymentRoute: typeof AppPaymentRoute
   AppProductRoute: typeof AppProductRoute
   AppRecommendationsRoute: typeof AppRecommendationsRoute
@@ -282,6 +302,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppCartRoute: AppCartRoute,
   AppCheckoutRoute: AppCheckoutRoute,
   AppConfirmationRoute: AppConfirmationRoute,
+  AppLogisticsRoute: AppLogisticsRoute,
   AppPaymentRoute: AppPaymentRoute,
   AppProductRoute: AppProductRoute,
   AppRecommendationsRoute: AppRecommendationsRoute,
