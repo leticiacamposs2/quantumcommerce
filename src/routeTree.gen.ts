@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppTrackingRouteImport } from './routes/app.tracking'
 import { Route as AppShopRouteImport } from './routes/app.shop'
 import { Route as AppRecommendationsRouteImport } from './routes/app.recommendations'
 import { Route as AppProductRouteImport } from './routes/app.product'
@@ -28,6 +29,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AppTrackingRoute = AppTrackingRouteImport.update({
+  id: '/tracking',
+  path: '/tracking',
+  getParentRoute: () => AppRoute,
 } as any)
 const AppShopRoute = AppShopRouteImport.update({
   id: '/shop',
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/app/product': typeof AppProductRoute
   '/app/recommendations': typeof AppRecommendationsRoute
   '/app/shop': typeof AppShopRoute
+  '/app/tracking': typeof AppTrackingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByTo {
   '/app/product': typeof AppProductRoute
   '/app/recommendations': typeof AppRecommendationsRoute
   '/app/shop': typeof AppShopRoute
+  '/app/tracking': typeof AppTrackingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   '/app/product': typeof AppProductRoute
   '/app/recommendations': typeof AppRecommendationsRoute
   '/app/shop': typeof AppShopRoute
+  '/app/tracking': typeof AppTrackingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +120,7 @@ export interface FileRouteTypes {
     | '/app/product'
     | '/app/recommendations'
     | '/app/shop'
+    | '/app/tracking'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/app/product'
     | '/app/recommendations'
     | '/app/shop'
+    | '/app/tracking'
   id:
     | '__root__'
     | '/'
@@ -133,6 +144,7 @@ export interface FileRouteTypes {
     | '/app/product'
     | '/app/recommendations'
     | '/app/shop'
+    | '/app/tracking'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -155,6 +167,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/app/tracking': {
+      id: '/app/tracking'
+      path: '/tracking'
+      fullPath: '/app/tracking'
+      preLoaderRoute: typeof AppTrackingRouteImport
+      parentRoute: typeof AppRoute
     }
     '/app/shop': {
       id: '/app/shop'
@@ -216,6 +235,7 @@ interface AppRouteChildren {
   AppProductRoute: typeof AppProductRoute
   AppRecommendationsRoute: typeof AppRecommendationsRoute
   AppShopRoute: typeof AppShopRoute
+  AppTrackingRoute: typeof AppTrackingRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
@@ -226,6 +246,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppProductRoute: AppProductRoute,
   AppRecommendationsRoute: AppRecommendationsRoute,
   AppShopRoute: AppShopRoute,
+  AppTrackingRoute: AppTrackingRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
