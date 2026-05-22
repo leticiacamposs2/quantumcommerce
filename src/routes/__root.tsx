@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Quantum Commerce" },
+      { name: "description", content: "Quantum Commerce is an AI-first omnichannel marketplace platform that personalizes shopping and optimizes operations." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Quantum Commerce" },
+      { property: "og:description", content: "Quantum Commerce is an AI-first omnichannel marketplace platform that personalizes shopping and optimizes operations." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Quantum Commerce" },
+      { name: "twitter:description", content: "Quantum Commerce is an AI-first omnichannel marketplace platform that personalizes shopping and optimizes operations." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4e16a4e7-d503-4c51-a6b4-b882ba916786/id-preview-41030301--a26a8ea0-8736-4062-a225-d94dc51c2953.lovable.app-1779411770061.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4e16a4e7-d503-4c51-a6b4-b882ba916786/id-preview-41030301--a26a8ea0-8736-4062-a225-d94dc51c2953.lovable.app-1779411770061.png" },
     ],
     links: [
       {
