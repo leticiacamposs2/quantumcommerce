@@ -13,6 +13,7 @@ import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppTrackingRouteImport } from './routes/app.tracking'
 import { Route as AppSupportRouteImport } from './routes/app.support'
+import { Route as AppStockRouteImport } from './routes/app.stock'
 import { Route as AppShopRouteImport } from './routes/app.shop'
 import { Route as AppSellerRouteImport } from './routes/app.seller'
 import { Route as AppRecommendationsRouteImport } from './routes/app.recommendations'
@@ -41,6 +42,11 @@ const AppTrackingRoute = AppTrackingRouteImport.update({
 const AppSupportRoute = AppSupportRouteImport.update({
   id: '/support',
   path: '/support',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppStockRoute = AppStockRouteImport.update({
+  id: '/stock',
+  path: '/stock',
   getParentRoute: () => AppRoute,
 } as any)
 const AppShopRoute = AppShopRouteImport.update({
@@ -101,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/app/recommendations': typeof AppRecommendationsRoute
   '/app/seller': typeof AppSellerRoute
   '/app/shop': typeof AppShopRoute
+  '/app/stock': typeof AppStockRoute
   '/app/support': typeof AppSupportRoute
   '/app/tracking': typeof AppTrackingRoute
 }
@@ -116,6 +123,7 @@ export interface FileRoutesByTo {
   '/app/recommendations': typeof AppRecommendationsRoute
   '/app/seller': typeof AppSellerRoute
   '/app/shop': typeof AppShopRoute
+  '/app/stock': typeof AppStockRoute
   '/app/support': typeof AppSupportRoute
   '/app/tracking': typeof AppTrackingRoute
 }
@@ -132,6 +140,7 @@ export interface FileRoutesById {
   '/app/recommendations': typeof AppRecommendationsRoute
   '/app/seller': typeof AppSellerRoute
   '/app/shop': typeof AppShopRoute
+  '/app/stock': typeof AppStockRoute
   '/app/support': typeof AppSupportRoute
   '/app/tracking': typeof AppTrackingRoute
 }
@@ -149,6 +158,7 @@ export interface FileRouteTypes {
     | '/app/recommendations'
     | '/app/seller'
     | '/app/shop'
+    | '/app/stock'
     | '/app/support'
     | '/app/tracking'
   fileRoutesByTo: FileRoutesByTo
@@ -164,6 +174,7 @@ export interface FileRouteTypes {
     | '/app/recommendations'
     | '/app/seller'
     | '/app/shop'
+    | '/app/stock'
     | '/app/support'
     | '/app/tracking'
   id:
@@ -179,6 +190,7 @@ export interface FileRouteTypes {
     | '/app/recommendations'
     | '/app/seller'
     | '/app/shop'
+    | '/app/stock'
     | '/app/support'
     | '/app/tracking'
   fileRoutesById: FileRoutesById
@@ -216,6 +228,13 @@ declare module '@tanstack/react-router' {
       path: '/support'
       fullPath: '/app/support'
       preLoaderRoute: typeof AppSupportRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/stock': {
+      id: '/app/stock'
+      path: '/stock'
+      fullPath: '/app/stock'
+      preLoaderRoute: typeof AppStockRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/shop': {
@@ -294,6 +313,7 @@ interface AppRouteChildren {
   AppRecommendationsRoute: typeof AppRecommendationsRoute
   AppSellerRoute: typeof AppSellerRoute
   AppShopRoute: typeof AppShopRoute
+  AppStockRoute: typeof AppStockRoute
   AppSupportRoute: typeof AppSupportRoute
   AppTrackingRoute: typeof AppTrackingRoute
 }
@@ -308,6 +328,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppRecommendationsRoute: AppRecommendationsRoute,
   AppSellerRoute: AppSellerRoute,
   AppShopRoute: AppShopRoute,
+  AppStockRoute: AppStockRoute,
   AppSupportRoute: AppSupportRoute,
   AppTrackingRoute: AppTrackingRoute,
 }
