@@ -12,8 +12,8 @@ function Product() {
       <div className="text-xs text-muted-foreground">Início › Eletrônicos › Fones e Headphones</div>
 
       <div className="grid lg:grid-cols-2 gap-8">
-        <div className="glass-strong rounded-3xl p-10 aspect-square grid place-items-center relative">
-          <div className="text-[260px]">{p.emoji}</div>
+        <div className="glass-strong rounded-3xl overflow-hidden relative aspect-square">
+          <img src={p.image} alt={p.name} className="w-full h-full object-cover" loading="eager" />
           <span className="absolute top-4 left-4 gradient-primary text-white text-xs px-3 py-1 rounded-full">-15%</span>
         </div>
 

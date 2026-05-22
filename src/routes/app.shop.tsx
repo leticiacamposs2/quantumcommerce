@@ -101,10 +101,10 @@ export function ProductGrid({ products: list }: { products: typeof products }) {
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
       {list.map((p) => (
         <Link to="/app/product" key={p.id} className="glass rounded-2xl p-4 hover:ring-glow transition group">
-          <div className="aspect-square rounded-xl bg-gradient-to-br from-secondary to-card grid place-items-center text-6xl relative overflow-hidden">
-            {p.emoji}
+          <div className="aspect-square rounded-xl overflow-hidden relative bg-card">
+            <img src={p.image} alt={p.name} className="w-full h-full object-cover transition duration-300 group-hover:scale-105" loading="lazy" />
             {p.badge && <span className="absolute top-2 left-2 text-[10px] gradient-primary text-white px-2 py-0.5 rounded-full">{p.badge}</span>}
-            <Heart className="size-4 absolute top-2 right-2 text-muted-foreground hover:text-primary" />
+            <Heart className="size-4 absolute top-2 right-2 text-white/80 hover:text-primary" />
           </div>
           <div className="mt-3 text-sm font-medium line-clamp-2 min-h-[2.5rem]">{p.name}</div>
           <div className="mt-2 flex items-center justify-between">
