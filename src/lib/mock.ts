@@ -100,14 +100,46 @@ export const products = [
 ];
 
 export const categories = [
-  { name: "Eletrônicos", icon: "📱" },
-  { name: "Casa Inteligente", icon: "🏠" },
-  { name: "Moda", icon: "👗" },
-  { name: "Beleza", icon: "💄" },
-  { name: "Esportes", icon: "🏃" },
-  { name: "Automotivo", icon: "🚗" },
-  { name: "Brinquedos", icon: "🧸" },
-  { name: "Mais", icon: "✨" },
+  {
+    name: "Eletrônicos",
+    image:
+      "https://images.pexels.com/photos/9667336/pexels-photo-9667336.jpeg",
+  },
+  {
+    name: "Casa Inteligente",
+    image:
+      "https://images.pexels.com/photos/18721086/pexels-photo-18721086.jpeg",
+  },
+  {
+    name: "Moda",
+    image:
+      "https://images.pexels.com/photos/9771808/pexels-photo-9771808.jpeg",
+  },
+  {
+    name: "Beleza",
+    image:
+      "https://images.pexels.com/photos/36650872/pexels-photo-36650872.jpeg",
+  },
+  {
+    name: "Esportes",
+    image:
+      "https://images.pexels.com/photos/31544363/pexels-photo-31544363.jpeg",
+  },
+  {
+    name: "Automotivo",
+    image:
+      "https://images.pexels.com/photos/9113865/pexels-photo-9113865.jpeg",
+  },
+  {
+    name: "Brinquedos",
+    image:
+      "https://images.pexels.com/photos/31757862/pexels-photo-31757862.jpeg",
+  },
+  {
+    name: "Mais",
+    image:
+      "https://images.pexels.com/photos/7563679/pexels-photo-7563679.jpeg",
+  },
 ];
 
 export const agents = [
