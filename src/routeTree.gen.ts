@@ -14,6 +14,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppTrackingRouteImport } from './routes/app.tracking'
 import { Route as AppSupportRouteImport } from './routes/app.support'
 import { Route as AppShopRouteImport } from './routes/app.shop'
+import { Route as AppSellerRouteImport } from './routes/app.seller'
 import { Route as AppRecommendationsRouteImport } from './routes/app.recommendations'
 import { Route as AppProductRouteImport } from './routes/app.product'
 import { Route as AppPaymentRouteImport } from './routes/app.payment'
@@ -44,6 +45,11 @@ const AppSupportRoute = AppSupportRouteImport.update({
 const AppShopRoute = AppShopRouteImport.update({
   id: '/shop',
   path: '/shop',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSellerRoute = AppSellerRouteImport.update({
+  id: '/seller',
+  path: '/seller',
   getParentRoute: () => AppRoute,
 } as any)
 const AppRecommendationsRoute = AppRecommendationsRouteImport.update({
@@ -86,6 +92,7 @@ export interface FileRoutesByFullPath {
   '/app/payment': typeof AppPaymentRoute
   '/app/product': typeof AppProductRoute
   '/app/recommendations': typeof AppRecommendationsRoute
+  '/app/seller': typeof AppSellerRoute
   '/app/shop': typeof AppShopRoute
   '/app/support': typeof AppSupportRoute
   '/app/tracking': typeof AppTrackingRoute
@@ -99,6 +106,7 @@ export interface FileRoutesByTo {
   '/app/payment': typeof AppPaymentRoute
   '/app/product': typeof AppProductRoute
   '/app/recommendations': typeof AppRecommendationsRoute
+  '/app/seller': typeof AppSellerRoute
   '/app/shop': typeof AppShopRoute
   '/app/support': typeof AppSupportRoute
   '/app/tracking': typeof AppTrackingRoute
@@ -113,6 +121,7 @@ export interface FileRoutesById {
   '/app/payment': typeof AppPaymentRoute
   '/app/product': typeof AppProductRoute
   '/app/recommendations': typeof AppRecommendationsRoute
+  '/app/seller': typeof AppSellerRoute
   '/app/shop': typeof AppShopRoute
   '/app/support': typeof AppSupportRoute
   '/app/tracking': typeof AppTrackingRoute
@@ -128,6 +137,7 @@ export interface FileRouteTypes {
     | '/app/payment'
     | '/app/product'
     | '/app/recommendations'
+    | '/app/seller'
     | '/app/shop'
     | '/app/support'
     | '/app/tracking'
@@ -141,6 +151,7 @@ export interface FileRouteTypes {
     | '/app/payment'
     | '/app/product'
     | '/app/recommendations'
+    | '/app/seller'
     | '/app/shop'
     | '/app/support'
     | '/app/tracking'
@@ -154,6 +165,7 @@ export interface FileRouteTypes {
     | '/app/payment'
     | '/app/product'
     | '/app/recommendations'
+    | '/app/seller'
     | '/app/shop'
     | '/app/support'
     | '/app/tracking'
@@ -199,6 +211,13 @@ declare module '@tanstack/react-router' {
       path: '/shop'
       fullPath: '/app/shop'
       preLoaderRoute: typeof AppShopRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/seller': {
+      id: '/app/seller'
+      path: '/seller'
+      fullPath: '/app/seller'
+      preLoaderRoute: typeof AppSellerRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/recommendations': {
@@ -253,6 +272,7 @@ interface AppRouteChildren {
   AppPaymentRoute: typeof AppPaymentRoute
   AppProductRoute: typeof AppProductRoute
   AppRecommendationsRoute: typeof AppRecommendationsRoute
+  AppSellerRoute: typeof AppSellerRoute
   AppShopRoute: typeof AppShopRoute
   AppSupportRoute: typeof AppSupportRoute
   AppTrackingRoute: typeof AppTrackingRoute
@@ -265,6 +285,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppPaymentRoute: AppPaymentRoute,
   AppProductRoute: AppProductRoute,
   AppRecommendationsRoute: AppRecommendationsRoute,
+  AppSellerRoute: AppSellerRoute,
   AppShopRoute: AppShopRoute,
   AppSupportRoute: AppSupportRoute,
   AppTrackingRoute: AppTrackingRoute,
@@ -279,3 +300,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
