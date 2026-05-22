@@ -23,6 +23,7 @@ import { Route as AppLogisticsRouteImport } from './routes/app.logistics'
 import { Route as AppConfirmationRouteImport } from './routes/app.confirmation'
 import { Route as AppCheckoutRouteImport } from './routes/app.checkout'
 import { Route as AppCartRouteImport } from './routes/app.cart'
+import { Route as AppAnalyticsRouteImport } from './routes/app.analytics'
 
 const AppRoute = AppRouteImport.update({
   id: '/app',
@@ -94,10 +95,16 @@ const AppCartRoute = AppCartRouteImport.update({
   path: '/cart',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAnalyticsRoute = AppAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/analytics': typeof AppAnalyticsRoute
   '/app/cart': typeof AppCartRoute
   '/app/checkout': typeof AppCheckoutRoute
   '/app/confirmation': typeof AppConfirmationRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/analytics': typeof AppAnalyticsRoute
   '/app/cart': typeof AppCartRoute
   '/app/checkout': typeof AppCheckoutRoute
   '/app/confirmation': typeof AppConfirmationRoute
@@ -131,6 +139,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/analytics': typeof AppAnalyticsRoute
   '/app/cart': typeof AppCartRoute
   '/app/checkout': typeof AppCheckoutRoute
   '/app/confirmation': typeof AppConfirmationRoute
@@ -149,6 +158,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/app'
+    | '/app/analytics'
     | '/app/cart'
     | '/app/checkout'
     | '/app/confirmation'
@@ -165,6 +175,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/app'
+    | '/app/analytics'
     | '/app/cart'
     | '/app/checkout'
     | '/app/confirmation'
@@ -181,6 +192,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/app'
+    | '/app/analytics'
     | '/app/cart'
     | '/app/checkout'
     | '/app/confirmation'
@@ -300,10 +312,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCartRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/analytics': {
+      id: '/app/analytics'
+      path: '/analytics'
+      fullPath: '/app/analytics'
+      preLoaderRoute: typeof AppAnalyticsRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
 interface AppRouteChildren {
+  AppAnalyticsRoute: typeof AppAnalyticsRoute
   AppCartRoute: typeof AppCartRoute
   AppCheckoutRoute: typeof AppCheckoutRoute
   AppConfirmationRoute: typeof AppConfirmationRoute
@@ -319,6 +339,7 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAnalyticsRoute: AppAnalyticsRoute,
   AppCartRoute: AppCartRoute,
   AppCheckoutRoute: AppCheckoutRoute,
   AppConfirmationRoute: AppConfirmationRoute,
