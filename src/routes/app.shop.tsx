@@ -42,7 +42,9 @@ function Shop() {
         <div className="grid grid-cols-4 md:grid-cols-8 gap-4 mt-4">
           {categories.map((c) => (
             <div key={c.name} className="glass rounded-2xl p-4 text-center hover:ring-glow transition cursor-pointer">
-              <div className="text-3xl">{c.icon}</div>
+              <div className="mx-auto mb-2 h-16 w-16 overflow-hidden rounded-3xl border border-border bg-muted">
+                <img src={c.image} alt={c.name} className="h-full w-full object-cover" loading="lazy" />
+              </div>
               <div className="text-xs mt-2 font-medium">{c.name}</div>
             </div>
           ))}
