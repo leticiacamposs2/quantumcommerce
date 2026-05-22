@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppShopRouteImport } from './routes/app.shop'
+import { Route as AppRecommendationsRouteImport } from './routes/app.recommendations'
 import { Route as AppProductRouteImport } from './routes/app.product'
 
 const AppRoute = AppRouteImport.update({
@@ -29,6 +30,11 @@ const AppShopRoute = AppShopRouteImport.update({
   path: '/shop',
   getParentRoute: () => AppRoute,
 } as any)
+const AppRecommendationsRoute = AppRecommendationsRouteImport.update({
+  id: '/recommendations',
+  path: '/recommendations',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppProductRoute = AppProductRouteImport.update({
   id: '/product',
   path: '/product',
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/app/product': typeof AppProductRoute
+  '/app/recommendations': typeof AppRecommendationsRoute
   '/app/shop': typeof AppShopRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/app/product': typeof AppProductRoute
+  '/app/recommendations': typeof AppRecommendationsRoute
   '/app/shop': typeof AppShopRoute
 }
 export interface FileRoutesById {
@@ -52,14 +60,26 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/app/product': typeof AppProductRoute
+  '/app/recommendations': typeof AppRecommendationsRoute
   '/app/shop': typeof AppShopRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/app' | '/app/product' | '/app/shop'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/app/product'
+    | '/app/recommendations'
+    | '/app/shop'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/app' | '/app/product' | '/app/shop'
-  id: '__root__' | '/' | '/app' | '/app/product' | '/app/shop'
+  to: '/' | '/app' | '/app/product' | '/app/recommendations' | '/app/shop'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/app/product'
+    | '/app/recommendations'
+    | '/app/shop'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -90,6 +110,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppShopRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/recommendations': {
+      id: '/app/recommendations'
+      path: '/recommendations'
+      fullPath: '/app/recommendations'
+      preLoaderRoute: typeof AppRecommendationsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/product': {
       id: '/app/product'
       path: '/product'
@@ -102,11 +129,13 @@ declare module '@tanstack/react-router' {
 
 interface AppRouteChildren {
   AppProductRoute: typeof AppProductRoute
+  AppRecommendationsRoute: typeof AppRecommendationsRoute
   AppShopRoute: typeof AppShopRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppProductRoute: AppProductRoute,
+  AppRecommendationsRoute: AppRecommendationsRoute,
   AppShopRoute: AppShopRoute,
 }
 
